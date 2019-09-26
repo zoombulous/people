@@ -8,7 +8,10 @@
 # Change Directory
       cd PEOPLELIST
       
-# Inside of PROJECTNAME, paste a JSON file (people.json) or create one and input data 
+# Inside of PROJECTNAME, paste a JSON file (people.json) or create one and input data
+
+# Run Vue CLI
+      npm run serve
   
 # Install JSON-Server (may do locally but theese instructions are for global install)
       npm i json-server -g
