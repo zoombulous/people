@@ -1,0 +1,16 @@
+{
+    "people": [
+        {"id": 1,
+         "first": "Donnie",
+         "last": "Cameron",
+         "age": 52},
+        {"id": 2,
+         "first": "Tracy",
+         "last": "Hamer",
+         "age": 47},
+        {"id": 3,
+         "first": "Graydon",
+         "last": "Cameron",
+         "age": 4}
+    ]
+}
