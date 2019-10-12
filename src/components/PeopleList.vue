@@ -11,30 +11,20 @@
 </template>
 
 <script>
-import axios from 'axios';
-const baseURL = "http://localhost:3000/people"
 export default {
     name: "people-list",
-    props: {
-	people: Array
-    }
-},
-async created {
-    try {
-        const res = await axios.get(baseURL);
-        this.people = res.data;
-    } catch(e) {
-        console.error(e);
-    }
+    data() {
+        return{
+            people: [],
+            first:'',
+            last: ''
     },
-methods: {
-    async addPerson() {
-    const res = await axios.post(people {name this.personName});
-    this.people = [...this.people, res.data];
-    this.personName = "";
-}
-}
-};
+        computed: {
+            fullname: function(){
+                return person.first + ' ' + person.last;
+            }
+        }
+    });
 </script>
 
 <style scoped>
