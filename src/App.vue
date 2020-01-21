@@ -1,71 +1,52 @@
 <template>
-  <div id="app">
-    <h1>Todos</h1>
-    <input type="text" v-model="personName" @keyup.enter="addPerson">
+    <div id="app">
+    <input v-model="startsWith" placeholder="starts with"/>
+    <input v-model="contains" placeholder="contains these letters"/>
+    <button id="btn" class="" v-on:click="findNames">Go</button>
+    <p>Result:</p>
     <ul>
-      <li v-for="person of people" :key="person.id">{{person.name}}</li>
+      <li v-for="name in names">{{ name }}</li>
     </ul>
-  </div>
+  </div>  
 </template>
 
 <script>
-    import axios from 'axios';
-const baseURL = "http://localhost:3000/todos"
+
+
 export default {
-  name: 'app',
-    data() {
-	return {
-	    people: []
-	    first: ''
-	    last: ''
-	    age: ''
-	    weight: ''
-	    height: ''
-	};
+  new Vue({
+    el: '#app',
+    data: {
+        contains: '',
+        startsWith: '',
+        names: [],
+        last_event: 0,
+        cancel: 0
     },
-    async created() {
-	try {
-	    const res = await axios.get(baseURL);
-	    this.people = res.data;
-	} catch(e) {
-	    console.error(e);
-	}
+    watch: {
+        contains() {
+            t = (new Date()).getTime();
+            if(t - this.last_event > 500)
+                this.findNames();
+            this.last_event = t;
+        }
     },
     methods: {
-	async addPerson() {
-	    const res = await axios.post(baseURL, { first: this.first
-						    last: this.last
-						    age: this.age
-						    weight: this.weight
-						    height: this.height
-						  })
-	    this.people = [...this.people, res.data];
-	    this.first = "";
-	    this.last = "";
-	    this.age = "";
-	    this.weight = "";
-	    this.height = '';
-	}
+        findNames() {
+            axios.get(
+                'http://names.sinistercode.com:4242/api/names?'
+                    + 'format=json'
+                    + '&sort=length-asc'
+                    + '&contains-letters=' + this.contains
+                    + '&starts-with=' + this.startsWith
+            ).then((response) => {
+                    this.names = response.data.results.map(item => item.name);
+                });
+        }
     }
+});
 };
-						    
 </script>
-    
-    <style>
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-li {
-    list-style: none;
-}
+
+<style>
 </style>
-    
