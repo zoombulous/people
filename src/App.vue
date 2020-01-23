@@ -13,7 +13,6 @@
 <script>
 
 
-export default {
   new Vue({
     el: '#app',
     data: {
@@ -45,7 +44,6 @@ export default {
         }
     }
 });
-};
 </script>
 
 <style>
