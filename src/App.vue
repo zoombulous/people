@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <pre v-if="info">
-      {{ info }}
-    </pre>
-    <div v-else>loading...</div>
-  </div>
+    <input v-model="startsWith" placeholder="starts with"/>
+    <input v-model="contains" placeholder="contains these letters"/>
+    <button id="btn" class="" v-on:click="findNames">Go</button>
+    <p>Result:</p>
+    <ul>
+      <li v-for="name in names" :key="name"></li>
+    </ul>
+  </div>  
 </template>
 
 <script>
@@ -14,20 +17,45 @@ export default {
   name: "App",
   data() {
     return {
-        info: null,
         contains: '',
         startsWith: '',
+        sortBy: 'alpha',
+        gender:'male,mostly-male,neutral,mostly-female,female',
+        minLength:'1',
+        maxLength:'25',
         names: [],
-        last_event: 0,
-        cancel: 0
+        pageSize: [10],
+        pageNumber: [1],
+        totalResults: 0,
+        lastEvent: 0
     };
-  },
-    
+},
 
-    methods: {
-        findNames() {
-            axios.get(
-                'http://names.sinistercode.com:4242/api/names?'
+watch: {
+        pageNumber() {
+            this.throttledFindNamesLeavePage();
+        },
+        lastPage() {
+            this.throttledFindNamesLeavePage();
+        },  
+        minLength() {
+            this.throttledFindNames();
+        },
+        maxLength() {
+            this.throttledFindNames();
+        },
+        startsWith() {
+            this.throttledFindNames();
+        },
+        contains() {
+            this.throttledFindNames();
+        },
+    },
+
+methods: {
+findNames() {
+    axios.get(
+        'http://names.sinistercode.com:4242/api/names?'
                     + 'format=json'
                     + '&sort=length-asc'
                     + '&contains-letters=' + this.contains
@@ -35,8 +63,37 @@ export default {
             ).then((response) => {
                 this.names = response.data.results.map(item => item.name);
             });
+},
+    resetPage() {
+            this.pageNumber=1;
+        },
+        nextPage() {
+            this.pageNumber++;
+        },
+        previousPage() {
+            this.pageNumber--;
+        },
+        lastPage() {
+            this.pageNumber = Math.ceil(this.totalResults / 10);
+        },
+        throttledFindNames() {
+            var t = (new Date()).getTime();
+            if(t - this.lastEvent > 500)
+                this.findNames(),
+            this.resetPage();
+            else
+                this.lastEvent = t;
+        },
+        throttledFindNamesLeavePage() {
+            var t = (new Date()).getTime();
+            if(t - this.lastEvent > 500)
+                this.findNames();
+            else
+                this.lastEvent = t;
         }
-  }
+    },
+    return: {
+        fontSize: 10
+    }
 };
 </script>
-
