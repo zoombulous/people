@@ -1,14 +1,18 @@
 <template>
-  <div id="app">
+<div id="app">
+  <h1>Lil' Baby Names</h1>
     <input v-model="startsWith" placeholder="starts with"/>
     <input v-model="contains" placeholder="contains these letters"/>
     <button id="btn" class="" v-on:click="findNames">Go</button>
-    <p>Result:</p>
+  <p>Result:</p>
     <ul>
       <li v-for="name in names" :key="name"></li>
     </ul>
-  </div>  
+</div>
 </template>
+<style>
+  @import './styles.css';
+</style>
 
 <script>
 import axios from "axios";
@@ -53,47 +57,58 @@ watch: {
     },
 
 methods: {
-findNames() {
-    axios.get(
-        'http://names.sinistercode.com:4242/api/names?'
+    findNames() {
+        axios
+            .get(
+                'http://names.sinistercode.com:4242/api/names?'
                     + 'format=json'
-                    + '&sort=length-asc'
+                    + '&sort=' + this.sortBy
                     + '&contains-letters=' + this.contains
                     + '&starts-with=' + this.startsWith
-            ).then((response) => {
-                this.names = response.data.results.map(item => item.name);
-            });
-},
-    resetPage() {
-            this.pageNumber=1;
-        },
-        nextPage() {
-            this.pageNumber++;
-        },
-        previousPage() {
-            this.pageNumber--;
-        },
-        lastPage() {
-            this.pageNumber = Math.ceil(this.totalResults / 10);
-        },
-        throttledFindNames() {
-            var t = (new Date()).getTime();
-            if(t - this.lastEvent > 500)
-                this.findNames(),
-            this.resetPage();
-            else
-                this.lastEvent = t;
-        },
-        throttledFindNamesLeavePage() {
-            var t = (new Date()).getTime();
-            if(t - this.lastEvent > 500)
-                this.findNames();
-            else
-                this.lastEvent = t;
-        }
+                    + '&gender=' + this.gender
+                    + '&sort=length&min-length=' + this.minLength
+                    + '&sort=length&max-length=' + this.maxLength
+                    + '&page-size=' + this.pageSize
+                    + '&page=' + this.pageNumber
+            )  
+            .then((response) => {
+                this.names = response.data.results.map(item => item.name)
+             { console.log(response)
+                this.names = response.data.results.map(item => item.name)
+             }
+            })
     },
+    resetPage() {
+        this.pageNumber=1;
+    },
+    nextPage() {
+        this.pageNumber++;
+    },
+    previousPage() {
+        this.pageNumber--;
+    },
+    lastPage() {
+        this.pageNumber = Math.ceil(this.totalResults / 10);
+    },
+    throttledFindNames() {
+        var t = (new Date()).getTime();
+        if(t - this.lastEvent > 500)
+            this.findNames(),
+        this.resetPage();
+        else
+            this.lastEvent = t;
+    },
+    throttledFindNamesLeavePage() {
+        var t = (new Date()).getTime();
+        if(t - this.lastEvent > 500)
+            this.findNames();
+        else
+            this.lastEvent = t;
+    }
+},
     return: {
         fontSize: 10
     }
 };
 </script>
+

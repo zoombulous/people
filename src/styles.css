@@ -1,0 +1,90 @@
+.center {
+    margin: 0 auto;
+    width: 80%;
+}
+.row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+html, body {
+    height: 100%;
+}
+.row1{
+    background-color: white;
+}
+.rowSlider{
+    background-color: white;
+    margin-right: 4;
+    margin-left: 4;
+}
+.rowPage{
+    background-color: lightgray;
+}
+.row2{
+    opacity: 0.8;
+    background-color: lightgray;
+    flex-basis: 550px;
+}
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    filter: drop-shadow(0 0 5px #333);
+}
+.row:last-child {
+    flex: 1;
+}
+.parent {
+    text-align: center;
+}
+
+
+body {
+    background-image:
+    url("orange.jpg"),
+    url("lil_baby_names_background.jpg");
+    background-repeat:
+    no-repeat,
+    repeat;
+    background-size:
+    13500px 57px,
+    1350px;
+    background-position:
+    top center,
+    80% 20%;
+    background-attachment:
+    scroll,
+    fixed;
+}
+h1 {
+    color: black;
+    text-align: center;
+    font-family: "Bookman Old Style";
+    font-weight: 1000;
+    font-variant: small-caps;
+    letter-spacing: 4px;
+}
+pre {
+    color: black;
+    text-align: left;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 20.5);
+    font-size: 12px;
+    padding-left: 145px;
+    font-weight: bold;
+}
+p {
+    color: black;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 2px 1.5px 1.5px rgba(255, 255, 255, 5.5);
+}
+button {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    text-align: center;
+    text-indent: -45px;
+    line-height: 178%;
+}
