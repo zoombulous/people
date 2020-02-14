@@ -6,7 +6,7 @@
     <button id="btn" class="" v-on:click="findNames">Go</button>
   <p>Result:</p>
     <ul>
-      <li v-for="name in names" :key="name"></li>
+      <li v-for="(name,index) in names" :key="name">{{name}}</li>
     </ul>
 </div>
 </template>
