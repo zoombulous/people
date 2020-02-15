@@ -1,14 +1,110 @@
 <template>
 <div id="app">
   <h1>Lil' Baby Names</h1>
-    <input v-model="startsWith" placeholder="starts with"/>
-    <input v-model="contains" placeholder="contains these letters"/>
-    <button id="btn" class="" v-on:click="findNames">Go</button>
-  <p>Result:</p>
-    <ul>
-      <li v-for="(name,index) in names" :key="name">{{name}}</li>
-    </ul>
-</div>
+  <div id="app">
+    
+    <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+      <div id="app" class="form-group">
+        <form action="" style="width: auto; margin: auto">
+          <div for="name" class="control-label"></div>
+          <select v-model="gender" class="form-control">
+            <option value="male,mostly-male,neutral,mostly-female,female">All Genders</option>
+            <option value="male,mostly-male,gender-neutral">All Male</option>
+            <option value="male">Most Masculine</option>
+            <option value="male,mostly-male">Medium Masculine</option>
+            <option value="gender-neutral">Gender Neutral</option>
+            <option value="female,mostly-female">Medium Feminine</option>
+            <option value="female">Most Feminine</option>
+            <option value="gender-neutral,female,mostly-female">All Female</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    
+    <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+      <div id="app" class="form-group">
+        <form action="" style="width: auto; margin: auto">
+          <div for="name" class="control-label">Sort</div>
+          <select v-model="sortBy" class="form-control">
+            <option value="alpha">A-Z</option>
+            <option value="alpha-desc">Z-A</option>
+            <option value="freq-asc">Least Common</option>
+            <option value="freq-desc">Most Common</option>
+            <option value="length">Shortest</option>
+            <option value="length-desc">Longest</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+      <div id="app" class="form-group">
+        <form action="" style="width: auto; margin: auto">
+          <div for="name" class="control-label">Starts With</div>
+          <input v-model="startsWith" @input="isTyping = true" placeholder="" size="15" class="form-control"/>
+        </form>
+      </div>
+    </div>
+    <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+      <div id="app" class="form-group">
+        <form action="" style="width: auto; margin: auto">
+          <div for="name" class="control-label">Contains</div>
+          <input v-model="contains" placeholder="" size="15" class="form-control"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div id="app" class="rowSlider center row1">
+    <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-1 mx-2">
+    </div>
+    <div id="app" class="form-group">
+      <form action="" style="width: auto; margin: auto" class="center">
+        <div for="name" class="control-label">Length</div>
+        <input v-model="maxLength"
+               type="range"
+               placeholder=""
+               min="1"
+               max="15"
+               class="custom-range"/>
+      </form>
+    </div>
+  </div>
+  
+  <div id="app" class="center row1">
+    <div id="app" class="col-12">
+      <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
+    </div>
+  </div>
+  
+  
+  <div id="app" class="rowPage center">
+    <div id="app" class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo</button>
+      <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249</button>
+      <div for="name" class="control-label">
+      </div>
+      <input v-model="pageNumber" placeholder="" size="5" class="form-control"/>
+      <button id="btn" class="btn btn-warning" v-on:click="nextPage">&#8250</button>
+      <button id="btn" class="btn btn-warning" v-on:click="lastPage">&raquo</button>
+    </div>
+  </div>
+  <div id="app" class="center row2">
+    <div id="app" class="group" role="group">
+      <p>Result:
+        <div id="app" class="center">
+          <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
+        </div>
+      </p>
+    </div>
+    <table id="app" class="table table-striped table-hover">
+      <tr v-for="(name,index) in names" :key="name">
+        <td>{{ name }}</td>
+      </tr>
+    </table>
+  </div>
+</div>  
+
+  
 </template>
 <style>
   @import './styles.css';
@@ -17,13 +113,15 @@
 <script>
 import axios from "axios";
 
+
+
 export default {
   name: "App",
   data() {
     return {
         contains: '',
         startsWith: '',
-        sortBy: 'alpha',
+        sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
         gender:'male,mostly-male,neutral,mostly-female,female',
         minLength:'1',
         maxLength:'25',
