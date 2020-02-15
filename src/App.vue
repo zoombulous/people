@@ -13,7 +13,7 @@
           <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
             <div id="app" class="form-group">
               <form action="" style="width: auto; margin: auto">
-                <div for="name" class="control-label"></div>
+                <div for="name" class="control-label">Gender</div>
                 <select v-model="gender" class="form-control">
                   <option value="male,mostly-male,neutral,mostly-female,female">All Genders</option>
                   <option value="male,mostly-male,gender-neutral">All Male</option>
@@ -178,11 +178,9 @@ methods: {
                     + '&page=' + this.pageNumber
             )  
             .then((response) => {
-                this.names = response.data.results.map(item => item.name)
-             { console.log(response)
-                this.names = response.data.results.map(item => item.name)
-             }
-            })
+                this.names = response.data.results.map(item => item.name);
+                this.totalResults = response.data['total-matches'];
+                });
     },
     resetPage() {
         this.pageNumber=1;
