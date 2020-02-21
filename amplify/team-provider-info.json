@@ -1,0 +1,15 @@
+{
+    "emacs": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-babynamesvueapp0121-emacs-171440-authRole",
+            "UnauthRoleArn": "arn:aws:iam::651989727879:role/amplify-babynamesvueapp0121-emacs-171440-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::651989727879:role/amplify-babynamesvueapp0121-emacs-171440-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-babynamesvueapp0121-emacs-171440-deployment",
+            "UnauthRoleName": "amplify-babynamesvueapp0121-emacs-171440-unauthRole",
+            "StackName": "amplify-babynamesvueapp0121-emacs-171440",
+            "StackId": "arn:aws:cloudformation:us-west-2:651989727879:stack/amplify-babynamesvueapp0121-emacs-171440/3500bb20-52b5-11ea-b78d-02b80ff4b548",
+            "AmplifyAppId": "d2jdjmnlvljxb8"
+        }
+    }
+}

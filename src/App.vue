@@ -5,7 +5,7 @@
     <div id="app" class="center">
       <div id="app" class="container-fluid">
         
-        <div id="app" class="row center row1">
+        <div id="app" class="row row1">
           <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-1 mx-2">
           </div>
           
@@ -76,35 +76,36 @@
             </form>
           </div>
         </div>
-        
+
         <div id="app" class="center row1">
-          <div id="app" class="col-12">
-            <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
+            <div id="app" class="col-12">
+              <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
+            </div>
           </div>
-        </div>
-        
         
         <div id="app" class="rowPage center">
           <div id="app" class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo</button>
-            <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249</button>
+            <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo;</button>
+            <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249;</button>
             <div for="name" class="control-label">
             </div>
             <input v-model="pageNumber" placeholder="" size="5" class="form-control"/>
-            <button id="btn" class="btn btn-warning" v-on:click="nextPage">&#8250</button>
-            <button id="btn" class="btn btn-warning" v-on:click="lastPage">&raquo</button>
+            <button id="btn" class="btn btn-warning" v-on:click="nextPage">&#8250;</button>
+            <button id="btn" class="btn btn-warning" v-on:click="lastPage">&raquo;</button>
           </div>
         </div>
         <div id="app" class="center row2">
           <div id="app" class="group" role="group">
             <p>Result:
+              <strong>
               <div id="app" class="center">
                 <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
               </div>
+              </strong>
             </p>
           </div>
           <table id="app" class="table table-striped table-hover">
-            <tr v-for="(name,index) in names" :key="name">
+            <tr v-for="name in names" :key="name">
               <td>{{ name }}</td>
             </tr>
           </table>
@@ -114,19 +115,27 @@
   </div>
 </div>
 </template>
+<link rel="stylesheet" href="vue-nouislider/dist/vue-nouislider.css"/>
+ 
+<script src="vue.js"></script>
+<script src="vue-nouislider/dist/vue-nouislider.browser.js"></script>
+
 <style>
   @import './styles.css';
 </style>
 
 <script>
 import axios from "axios";
+import { components } from 'aws-amplify-vue';
+var slider = document.getElementById('slider');
 
 
 
 export default {
   name: "App",
   data() {
-    return {
+      return {
+          sliderValue: ['10.00', '80.00'],
         contains: '',
         startsWith: '',
         sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
@@ -208,7 +217,8 @@ methods: {
             this.findNames();
         else
             this.lastEvent = t;
-    }
+    },
+    
 },
     return: {
         fontSize: 10
