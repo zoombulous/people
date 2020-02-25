@@ -2,15 +2,14 @@
 <div id="app">
   <h1>Lil' Baby Names</h1>
   <div id="app" class="parent">
-    <div id="app" class="center">
-      <div id="app" class="container-fluid">
+
+      <div id="app" class="container-fluid px-5">
         
-        <div id="app" class="row row1">
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-1 mx-2">
-          </div>
+        <div id="app" class="row bg-white">
           
           
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+          
+          <div id="app" class="col">
             <div id="app" class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Gender</div>
@@ -28,7 +27,7 @@
             </div>
           </div>
           
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+          <div id="app" class="col">
             <div id="app" class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Sort</div>
@@ -43,7 +42,7 @@
               </form>
             </div>
           </div>
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+          <div id="app" class="col">
             <div id="app" class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Starts With</div>
@@ -51,7 +50,7 @@
               </form>
             </div>
           </div>
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-2 mx-2">
+          <div id="app" class="col">
             <div id="app" class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Contains</div>
@@ -61,11 +60,11 @@
           </div>
         </div>
         
-        <div id="app" class="rowSlider center row1">
-          <div id="app" class="col-xs-12 col-sm-7 col-md-5 col-lg-1 mx-2">
+        <div id="app" class="row bg-white">
+          <div id="app" class="col">
           </div>
           <div id="app" class="form-group">
-            <form action="" style="width: auto; margin: auto" class="center">
+            <form action="" style="" class="">
               <div for="name" class="control-label">Length</div>
               <input v-model="maxLength"
                      type="range"
@@ -77,28 +76,30 @@
           </div>
         </div>
 
-        <div id="app" class="center row1">
-            <div id="app" class="col-12">
-              <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
-            </div>
-          </div>
-        
-        <div id="app" class="rowPage center">
-          <div id="app" class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo;</button>
-            <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249;</button>
-            <div for="name" class="control-label">
-            </div>
-            <input v-model="pageNumber" placeholder="" size="5" class="form-control"/>
-            <button id="btn" class="btn btn-warning" v-on:click="nextPage">&#8250;</button>
-            <button id="btn" class="btn btn-warning" v-on:click="lastPage">&raquo;</button>
+        <div id="app" class="row bg-white">
+          <div id="app" class="col-12">
+            <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
           </div>
         </div>
-        <div id="app" class="center row2">
+        
+        <div id="app" class="row bg-light">
+          <div id="app" class="col">
+            <div id="app" class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo;</button>
+              <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249;</button>
+              <div for="name" class="control-label">
+              </div>
+              <input v-model="pageNumber" placeholder="" size="5" class="form-control"/>
+              <button id="btn" class="btn btn-warning" v-on:click="nextPage">&#8250;</button>
+              <button id="btn" class="btn btn-warning" v-on:click="lastPage">&raquo;</button>
+            </div>
+          </div>
+        </div>
+        <div id="app" class="row2">
           <div id="app" class="group" role="group">
             <p>Result:
               <strong>
-              <div id="app" class="center">
+              <div id="app" class="">
                 <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
               </div>
               </strong>
@@ -111,7 +112,7 @@
           </table>
         </div>
       </div>
-    </div>
+    
   </div>
 </div>
 </template>
