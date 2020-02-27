@@ -3,14 +3,14 @@
   <h1>Lil' Baby Names</h1>
   <div id="app" class="parent">
 
-      <div id="app" class="container-fluid px-5">
+      <div class="container-fluid px-5">
         
-        <div id="app" class="row bg-white">
+        <div class="row bg-white">
           
           
           
-          <div id="app" class="col">
-            <div id="app" class="form-group">
+          <div class="col">
+            <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Gender</div>
                 <select v-model="gender" class="form-control">
@@ -27,8 +27,8 @@
             </div>
           </div>
           
-          <div id="app" class="col">
-            <div id="app" class="form-group">
+          <div class="col">
+            <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Sort</div>
                 <select v-model="sortBy" class="form-control">
@@ -42,16 +42,16 @@
               </form>
             </div>
           </div>
-          <div id="app" class="col">
-            <div id="app" class="form-group">
+          <div class="col">
+            <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Starts With</div>
                 <input v-model="startsWith" @input="isTyping = true" placeholder="" size="15" class="form-control"/>
               </form>
             </div>
           </div>
-          <div id="app" class="col">
-            <div id="app" class="form-group">
+          <div class="col">
+            <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Contains</div>
                 <input v-model="contains" placeholder="" size="15" class="form-control"/>
@@ -60,10 +60,10 @@
           </div>
         </div>
         
-        <div id="app" class="row bg-white">
-          <div id="app" class="col">
+        <div class="row bg-white">
+          <div class="col">
           </div>
-          <div id="app" class="form-group">
+          <div class="form-group">
             <form action="" style="" class="">
               <div for="name" class="control-label">Length</div>
               <input v-model="maxLength"
@@ -76,15 +76,15 @@
           </div>
         </div>
 
-        <div id="app" class="row bg-white">
-          <div id="app" class="col-12">
-            <button id="btn" class="btn btn-warning" v-on:click="findNames">Go</button>
+        <div class="row bg-white">
+          <div class="col-12">
+            <button class="btn btn-warning" v-on:click="findNames">Go</button>
           </div>
         </div>
         
-        <div id="app" class="row bg-light">
-          <div id="app" class="col">
-            <div id="app" class="btn-group" role="group" aria-label="Basic example">
+        <div class="row bg-light">
+          <div class="col">
+            <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-warning" v-on:click="resetPage">&laquo;</button>
               <button type="button" class="btn btn-warning" v-on:click="previousPage">&#8249;</button>
               <div for="name" class="control-label">
@@ -95,24 +95,26 @@
             </div>
           </div>
         </div>
-        <div id="app" class="row2">
-          <div id="app" class="group" role="group">
-            <p>Result:
-              <strong>
-              <div id="app" class="">
-                <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
-              </div>
-              </strong>
-            </p>
+        <div class="row2 row">
+          <div class="col">
+            <div class="" role="group">
+              <p>Result:
+                <strong>
+                  <div class="">
+                    <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
+                  </div>
+                </strong>
+              </p>
+            </div>
+            <table class="table table-striped table-hover">
+              <tr v-for="name in names" :key="name">
+                <td>{{ name }}</td>
+              </tr>
+            </table>
           </div>
-          <table id="app" class="table table-striped table-hover">
-            <tr v-for="name in names" :key="name">
-              <td>{{ name }}</td>
-            </tr>
-          </table>
         </div>
       </div>
-    
+      
   </div>
 </div>
 </template>
@@ -129,7 +131,9 @@
 import axios from "axios";
 import { components } from 'aws-amplify-vue';
 var slider = document.getElementById('slider');
+require('dotenv').config();
 
+console.log(process.env);
 
 
 export default {

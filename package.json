@@ -13,6 +13,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.4.0",
     "core-js": "^3.4.4",
+    "dotenv": "^8.2.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "sass-loader": "^8.0.2",
@@ -40,9 +41,9 @@
       "eslint:recommended"
     ],
     "rules": {
-        "no-console": 0,
-        "no-unused-vars": 0,
-        "no-parsing": 0
+      "no-console": 0,
+      "no-unused-vars": 0,
+      "no-parsing": 0
     },
     "parserOptions": {
       "parser": "babel-eslint"
