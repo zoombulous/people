@@ -14,14 +14,11 @@
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Gender</div>
                 <select v-model="gender" class="form-control">
-                  <option value="male,mostly-male,neutral,mostly-female,female">All Genders</option>
-                  <option value="male,mostly-male,gender-neutral">All Male</option>
-                  <option value="male">Most Masculine</option>
-                  <option value="male,mostly-male">Medium Masculine</option>
-                  <option value="gender-neutral">Gender Neutral</option>
-                  <option value="female,mostly-female">Medium Feminine</option>
-                  <option value="female">Most Feminine</option>
-                  <option value="gender-neutral,female,mostly-female">All Female</option>
+                  <option value="male">Male</option>
+                  <option value="male,mostly-male,gender-neutral">Mostly Male</option>
+                  <option value="">All Genders</option>
+                  <option value="female,mostly-female,gender-neutral">Mostly Female</option>
+                  <option value="female">Female</option>
                 </select>
               </form>
             </div>
@@ -95,7 +92,7 @@
             </div>
           </div>
         </div>
-        <div class="row2 row">
+        <div class="row row2">
           <div class="col">
             <div class="" role="group">
               <p>Result:
