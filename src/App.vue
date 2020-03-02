@@ -127,9 +127,9 @@
 <script>
 import axios from "axios";
 import { components } from 'aws-amplify-vue';
+import _ from 'lodash';
 var slider = document.getElementById('slider');
 require('dotenv').config();
-
 console.log(process.env);
 
 
