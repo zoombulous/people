@@ -138,21 +138,22 @@ export default {
   data() {
       return {
           sliderValue: ['10.00', '80.00'],
-        contains: '',
-        startsWith: '',
-        sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
-        gender:'male,mostly-male,neutral,mostly-female,female',
-        minLength:'1',
-        maxLength:'25',
-        names: [],
-        pageSize: [10],
-        pageNumber: [1],
-        totalResults: 0,
-        lastEvent: 0
+          contains: '',
+          startsWith: '',
+          sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
+          gender:'male,mostly-male,neutral,mostly-female,female',
+          minLength:'1',
+          maxLength:'25',
+          names: [],
+          pageSize: [10],
+          pageNumber: [1],
+          totalResults: 0,
+          lastEvent: 0,
+          debouncedFindNames: this.findNames
     };
 },
 
-watch: {
+    watch: {
         pageNumber() {
             this.throttledFindNamesLeavePage();
         },
@@ -165,63 +166,69 @@ watch: {
         maxLength() {
             this.throttledFindNames();
         },
-        startsWith() {
-            this.throttledFindNames();
-        },
+        
         contains() {
             this.throttledFindNames();
         },
-    },
-
-methods: {
-    findNames() {
-        axios
-            .get(
-                'http://names.sinistercode.com:4242/api/names?'
-                    + 'format=json'
-                    + '&sort=' + this.sortBy
-                    + '&contains-letters=' + this.contains
-                    + '&starts-with=' + this.startsWith
-                    + '&gender=' + this.gender
-                    + '&sort=length&min-length=' + this.minLength
-                    + '&sort=length&max-length=' + this.maxLength
-                    + '&page-size=' + this.pageSize
-                    + '&page=' + this.pageNumber
-            )  
-            .then((response) => {
-                this.names = response.data.results.map(item => item.name);
-                this.totalResults = response.data['total-matches'];
-                });
-    },
-    resetPage() {
-        this.pageNumber=1;
-    },
-    nextPage() {
-        this.pageNumber++;
-    },
-    previousPage() {
-        this.pageNumber--;
-    },
-    lastPage() {
-        this.pageNumber = Math.ceil(this.totalResults / 10);
-    },
-    throttledFindNames() {
-        var t = (new Date()).getTime();
-        if(t - this.lastEvent > 500)
-            this.findNames(),
-        this.resetPage();
-        else
-            this.lastEvent = t;
-    },
-    throttledFindNamesLeavePage() {
-        var t = (new Date()).getTime();
-        if(t - this.lastEvent > 500)
-            this.findNames();
-        else
-            this.lastEvent = t;
+        changeKey() {
+            this.reload();
+        },
+        startsWith() {
+            this.throttledFindNames();
+        },
     },
     
-},
+    methods: {
+        findNames: _.debounce(
+            function () {
+                axios
+                    .get(
+                    'http://names.sinistercode.com:4242/api/names?'
+                        + 'format=json'
+                        + '&sort=' + this.sortBy
+                        + '&contains-letters=' + this.contains
+                        + '&starts-with=' + this.startsWith
+                        + '&gender=' + this.gender
+                        + '&sort=length&min-length=' + this.minLength
+                        + '&sort=length&max-length=' + this.maxLength
+                        + '&page-size=' + this.pageSize
+                        + '&page=' + this.pageNumber
+                )  
+                    .then((response) => {
+                    this.names = response.data.results.map(item => item.name);
+                    this.totalResults = response.data['total-matches'];
+                });
+            }, 500),
+        
+        resetPage() {
+            this.pageNumber=1;
+        },
+        nextPage() {
+            this.pageNumber++;
+        },
+        previousPage() {
+            this.pageNumber--;
+        },
+        lastPage() {
+            this.pageNumber = Math.ceil(this.totalResults / 10);
+        },
+        throttledFindNames() {
+            let t = (new Date()).getTime();
+            if(t - this.lastEvent > 500)
+                this.findNames(),
+            this.resetPage();
+            else
+                this.lastEvent = t;
+        },
+        throttledFindNamesLeavePage() {
+            let t = (new Date()).getTime();
+            if(t - this.lastEvent > 500)
+                this.findNames();
+            else
+                this.lastEvent = t;
+        },
+        
+    },
     return: {
         fontSize: 10
     }
