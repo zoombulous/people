@@ -4,10 +4,11 @@ import axios from 'axios';
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import Amplify, * as AmplifyModules from 'aws-amplify'
-import { AmplifyPlugin } from 'aws-amplify-vue'
-import awsconfig from './aws-exports'
-import dotenv from 'dotenv'
+import Amplify, * as AmplifyModules from 'aws-amplify';
+import { AmplifyPlugin } from 'aws-amplify-vue';
+import awsconfig from './aws-exports';
+import dotenv from 'dotenv';
+import $ from 'jquery';
 
 global.Vue = Vue;
 

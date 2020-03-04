@@ -59,20 +59,18 @@
         
         <div class="row bg-white">
           <div class="col">
-          </div>
-          <div class="form-group">
-            <form action="" style="" class="">
-              <div for="name" class="control-label">Length</div>
-              <input v-model="maxLength"
-                     type="range"
-                     placeholder=""
-                     min="1"
-                     max="15"
-                     class="custom-range"/>
-            </form>
+          
+            <div class="range-slider">
+              <span @change="slider">from <input v-model.number="minLength" type="number"  min="1" max="15"/> to <input  v-model.number="maxLength" type="number"  min="1" max="15"/></span>
+              <input @change="slider" v-model.number="minLength" min="1" max="15" step="1" type="range" />
+              <input @change="slider" v-model.number="maxLength" min="1" max="15" step="1" type="range" />
+              <svg width="100%" height="24">
+                <line x1="4" y1="0" x2="300" y2="0" stroke="#444" stroke-width="12" stroke-dasharray="1 19"></line>
+              </svg>
+            </div>
           </div>
         </div>
-
+          
         <div class="row bg-white">
           <div class="col-12">
             <button class="btn btn-warning" v-on:click="findNames">Go</button>
@@ -128,6 +126,7 @@
 import axios from "axios";
 import { components } from 'aws-amplify-vue';
 import _ from 'lodash';
+import $ from 'jquery';
 var slider = document.getElementById('slider');
 require('dotenv').config();
 console.log(process.env);
@@ -137,13 +136,12 @@ export default {
   name: "App",
   data() {
       return {
-          sliderValue: ['10.00', '80.00'],
           contains: '',
           startsWith: '',
           sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
           gender:'male,mostly-male,neutral,mostly-female,female',
           minLength:'1',
-          maxLength:'25',
+          maxLength:'15',
           names: [],
           pageSize: [10],
           pageNumber: [1],
@@ -226,6 +224,13 @@ export default {
                 this.findNames();
             else
                 this.lastEvent = t;
+        },
+        slider: function() {
+            if (this.minLength > this.maxLength) {
+                var tmp = this.maxLength;
+                this.maxLength = this.minLength;
+                this.minLength = tmp;
+            }
         },
         
     },
