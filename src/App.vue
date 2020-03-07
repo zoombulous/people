@@ -59,18 +59,62 @@
         
         <div class="row bg-white">
           <div class="col">
+           <p>Length<p>
+            <div class="block">
+              <el-slider
+                v-model="value"
+                range
+                show-stops
+                :max="10">
+              </el-slider>
+            </div>
           
             <div class="range-slider">
-              <span @change="slider">from <input v-model.number="minLength" type="number"  min="1" max="15"/> to <input  v-model.number="maxLength" type="number"  min="1" max="15"/></span>
-              <input @change="slider" v-model.number="minLength" min="1" max="15" step="1" type="range" />
-              <input @change="slider" v-model.number="maxLength" min="1" max="15" step="1" type="range" />
+              
+              <input @change="slider"
+                     v-model.number="minLength"
+                     min="1"
+                     max="15"
+                     step="1"
+                     type="range" />
+              
+              <input @change="slider"
+                     v-model.number="maxLength"
+                     min="1"
+                     max="15"
+                     step="1"
+                     type="range" />
               <svg width="100%" height="24">
-                <line x1="4" y1="0" x2="300" y2="0" stroke="#444" stroke-width="12" stroke-dasharray="1 19"></line>
+                <line x1="4"
+                      y1="0"
+                      x2="300"
+                      y2="0"
+                      stroke="#444"
+                      stroke-width="0"
+                      stroke-dasharray="1 19">
+                </line>
               </svg>
             </div>
+            <div class="sliderticks">
+    <p>1</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p>5</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p>10</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p>15</p>
+  </div>
           </div>
         </div>
-          
+        
         <div class="row bg-white">
           <div class="col-12">
             <button class="btn btn-warning" v-on:click="findNames">Go</button>
@@ -114,9 +158,11 @@
 </div>
 </template>
 <link rel="stylesheet" href="vue-nouislider/dist/vue-nouislider.css"/>
- 
+
+<script src="element-slider.js"></script>
 <script src="vue.js"></script>
 <script src="vue-nouislider/dist/vue-nouislider.browser.js"></script>
+<script src="//unpkg.com/element-ui@2.13.0/lib/index.js"></script>
 
 <style>
   @import './styles.css';
@@ -127,15 +173,16 @@ import axios from "axios";
 import { components } from 'aws-amplify-vue';
 import _ from 'lodash';
 import $ from 'jquery';
+import VueSlideBar from 'vue-slide-bar';
 var slider = document.getElementById('slider');
 require('dotenv').config();
 console.log(process.env);
-
 
 export default {
   name: "App",
   data() {
       return {
+          value: [3,7],
           contains: '',
           startsWith: '',
           sortBy: 'alpha-asc, alpha-desc, freq-asc, freq-desc, length, length-desc',
@@ -174,6 +221,10 @@ export default {
         startsWith() {
             this.throttledFindNames();
         },
+    },
+
+    components: {
+        VueSlideBar
     },
     
     methods: {

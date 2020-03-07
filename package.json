@@ -14,12 +14,14 @@
     "bootstrap-vue": "^2.4.0",
     "core-js": "^3.4.4",
     "dotenv": "^8.2.0",
+    "element-ui": "^2.13.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.10",
     "vue-lodash": "^2.1.1",
-    "vue-nouislider": "^1.0.1"
+    "vue-nouislider": "^1.0.1",
+    "vue-slide-bar": "^1.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.2",

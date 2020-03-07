@@ -9,6 +9,8 @@ import { AmplifyPlugin } from 'aws-amplify-vue';
 import awsconfig from './aws-exports';
 import dotenv from 'dotenv';
 import $ from 'jquery';
+import Element from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 global.Vue = Vue;
 
@@ -23,3 +25,4 @@ Amplify.configure(awsconfig);
 new Vue({
   render: h => h(App),
 }).$mount('#app');
+

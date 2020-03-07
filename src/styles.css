@@ -39,12 +39,13 @@ html, body {
 .parent {
     text-align: center;
 }
+
 .range-slider {
   width: 300px;
   margin: auto;
   text-align: center;
   position: relative;
-  height: 6em;
+  -webkit-appearance: none;
 }
 
 .range-slider svg,
@@ -52,6 +53,7 @@ html, body {
   position: absolute;
   left: 0;
   bottom: 0;
+  -webkit-appearance: none;
 }
 
 input[type=number] {
@@ -59,6 +61,7 @@ input[type=number] {
   text-align: center;
   font-size: 1.6em;
   -moz-appearance: textfield;
+  -webkit-appearance: none;
 }
 
 input[type=number]::-webkit-outer-spin-button,
@@ -77,20 +80,10 @@ input[type=range] {
 }
 
 input[type=range]:focus {
-  outline: none;
+    outline: none;
+    -webkit-appearance: none;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #2497e3;
-}
-
-input[type=range]:focus::-ms-fill-lower {
-  background: #2497e3;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-  background: #2497e3;
-}
 
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
@@ -101,6 +94,9 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 1px;
   box-shadow: none;
   border: 0;
+  border-color: transparent;
+  color: transparent;
+  -webkit-appearance: none;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -113,11 +109,32 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 25px;
   background: #a1d0ff;
   cursor: pointer;
+  color: transparent;
+  border-color: transparent;
   -webkit-appearance: none;
   margin-top: -7px;
 }
 
+.sliderticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin: 0 392px;
+}
 
+.sliderticks p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 1px;
+  background: #D3D3D3;
+  height: 10px;
+  line-height: 40px;
+  margin: 0 0 20px 0;
+  font-weight: 50px;
+  font-size: 15px;
+}
 
 body {
     background-image:
