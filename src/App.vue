@@ -59,59 +59,63 @@
         
         <div class="row bg-white">
           <div class="col">
-           <p>Length<p>
-            <div class="block">
-              <el-slider
-                v-model="value"
-                range
-                show-stops
-                :max="10">
-              </el-slider>
-            </div>
+            <div class="form-group">
+              <p>Length<p>
+                <div class="block">
+                  <el-slider
+                    v-model="value"
+                    range
+                    show-stops
+                    :max="10">
+                  </el-slider>
+                </div>
           
-            <div class="range-slider">
-              
-              <input @change="slider"
-                     v-model.number="minLength"
-                     min="1"
-                     max="15"
-                     step="1"
-                     type="range" />
-              
-              <input @change="slider"
-                     v-model.number="maxLength"
-                     min="1"
-                     max="15"
-                     step="1"
-                     type="range" />
-              <svg width="100%" height="24">
-                <line x1="4"
-                      y1="0"
-                      x2="300"
-                      y2="0"
-                      stroke="#444"
-                      stroke-width="0"
-                      stroke-dasharray="1 19">
-                </line>
-              </svg>
+                <div class="range-slider">
+                  
+                  <input @change="slider"
+                         v-model.number="minLength"
+                         min="1"
+                         max="15"
+                         step="1"
+                         type="range" />
+                  
+                  <input @change="slider"
+                         v-model.number="maxLength"
+                         min="1"
+                         max="15"
+                         step="1"
+                         type="range" />
+                  <svg width="100%" height="24">
+                    <line x1="4"
+                          y1="0"
+                          x2="300"
+                          y2="0"
+                          stroke="#444"
+                          stroke-width="0"
+                          stroke-dasharray="1 19"
+                          >
+                    </line>
+                    
+                  </svg>
+                </div>
+                <div class="range-slider">
+                  <p>1</p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p>5</p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p>10</p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p>15</p>
+                </div>
             </div>
-            <div class="sliderticks">
-    <p>1</p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p>5</p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p>10</p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p>15</p>
-  </div>
           </div>
         </div>
         

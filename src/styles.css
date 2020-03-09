@@ -46,6 +46,9 @@ html, body {
   text-align: center;
   position: relative;
   -webkit-appearance: none;
+   display: flex;
+    justify-content: space-between;
+    padding: 0 9px;
 }
 
 .range-slider svg,
@@ -116,13 +119,17 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .sliderticks {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 50px;
-  margin: 0 392px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    margin: 0 32.15%;
 }
 
-.sliderticks p {
+
+
+
+
+.range-slider p {
   position: relative;
   display: flex;
   justify-content: center;
