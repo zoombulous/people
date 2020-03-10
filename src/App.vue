@@ -215,7 +215,6 @@ export default {
         maxLength() {
             this.throttledFindNames();
         },
-        
         contains() {
             this.throttledFindNames();
         },
@@ -223,6 +222,12 @@ export default {
             this.reload();
         },
         startsWith() {
+            this.throttledFindNames();
+        },
+        gender() {
+            this.throttledFindNames();
+        },
+        sortBy() {
             this.throttledFindNames();
         },
     },
