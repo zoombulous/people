@@ -23,15 +23,15 @@ html, body {
     
 }
 .row2{
-    opacity: 0.8;
-    background-color: lightgray;
+    background-color: rgba(211, 211, 211, 0.7);
     flex-basis: 550px;
 }
+
 .container-fluid {
     display: flex;
     flex-direction: column;
     height: 100%;
-    filter: drop-shadow(0 0 5px #333);
+    filter: drop-shadow(0 0 5px #555);
 }
 .row:last-child {
     flex: 1;
@@ -180,7 +180,6 @@ p {
     color: black;
     font-weight: 900;
     text-align: center;
-    text-shadow: 2px 1.5px 1.5px rgba(255, 255, 255, 5.5);
 }
 button {
     text-align: center;
