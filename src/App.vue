@@ -9,7 +9,7 @@
           
           
           
-          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1">
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Gender</div>
@@ -24,7 +24,7 @@
             </div>
           </div>
           
-          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1">
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Sort</div>
@@ -39,7 +39,7 @@
               </form>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1">
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Starts With</div>
@@ -47,7 +47,7 @@
               </form>
             </div>
           </div>
-          <div class="col">
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="form-group">
               <form action="" style="width: auto; margin: auto">
                 <div for="name" class="control-label">Contains</div>
