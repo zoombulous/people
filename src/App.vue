@@ -141,11 +141,9 @@
         <div class="row row2">
           <div class="col">
             <div class="" role="group">
-              <p>Result:
+              <p>Results: {{ totalResults}}
                 <strong>
-                  <div class="">
-                    <input v-model="totalResults" placeholder="" size="5" class="form-control"/>
-                  </div>
+                  
                 </strong>
               </p>
             </div>
