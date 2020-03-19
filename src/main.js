@@ -12,6 +12,7 @@ import $ from 'jquery';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/element.js'
+import vuetify from './plugins/vuetify';
 
 global.Vue = Vue;
 
@@ -24,6 +25,7 @@ Vue.use(
 Amplify.configure(awsconfig);
 
 new Vue({
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app');
 
