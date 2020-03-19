@@ -11,6 +11,7 @@ import dotenv from 'dotenv';
 import $ from 'jquery';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './plugins/element.js'
 
 global.Vue = Vue;
 
