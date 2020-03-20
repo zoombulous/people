@@ -49,6 +49,7 @@ html, body {
    display: flex;
     justify-content: space-between;
     padding: 0 9px;
+    @import url("//unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css");
 }
 
 .range-slider svg,
