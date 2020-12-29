@@ -57,23 +57,6 @@
           </div>
         </div>
 
-        <div class="row bg-white">
-          <div class="col">
-            <div class="form-group">
-              <p>Gender Digit: {{ genderDigit }}<p>
-          
-                <div class="range-slider">
-                  
-                  <input @change="genderMap"
-                         v-model.number="genderDigit"
-                         min="1"
-                         max="5"
-                         step="1"
-                         type="range" />
-                </div>
-            </div>
-          </div>
-        </div>
         
 
         <div class="row bg-white">
