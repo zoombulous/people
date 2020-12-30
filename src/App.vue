@@ -229,7 +229,7 @@ export default {
             function () {
                 axios
                     .get(
-                    'https://names.sinistercode.com:4242/api/names?'
+                    'http://names.sinistercode.com:4242/api/names?'
                         + 'format=json'
                         + '&sort=' + this.sortBy
                         + '&contains-letters=' + this.contains
